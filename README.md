@@ -13,7 +13,7 @@ Clone the repo and run
 npm install
 ```
 
-Add your OpenAI API key to the ```.env``` file.
+Add your OpenAI API key to the ```.env``` file as ```VITE_OPENAI_API_KEY```
 
 
 ## Run the Application
