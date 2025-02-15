@@ -11,18 +11,20 @@ interface MessageType {
   sender: "user" | "assistant";
 }
 
+// Hardcoded chats to fill the sidebar
 const CHAT_IDS = ["Typescript tutorial", "AI Evaluators", "Product Engineer"];
 
 const Chat: React.FC = () => {
   const [currentChatId, setCurrentChatId] = useState<string>(CHAT_IDS[0]);
   const [messages, setMessages] = useState<Record<string, MessageType[]>>({});
 
+  // Send user message and receive new assistant response
   const handleSendMessage = async (message: string) => {
     if (!message.trim()) return;
 
     const newMessages: MessageType[] = [
       ...(messages[currentChatId] || []),
-      { id: Date.now(), text: message, sender: "user" }
+      { id: Math.floor(Date.now() / 10000), text: message, sender: "user" }
     ];
 
     setMessages((prev) => ({
@@ -36,7 +38,7 @@ const Chat: React.FC = () => {
         ...prev,
         [currentChatId]: [
           ...(prev[currentChatId] || []),
-          { id: Date.now(), text: response, sender: "assistant" }
+          { id: Math.floor(Date.now() / 10000), text: response, sender: "assistant" }
         ]
       }));
     } catch (error) {
