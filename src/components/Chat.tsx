@@ -24,7 +24,7 @@ const Chat: React.FC = () => {
 
     const newMessages: MessageType[] = [
       ...(messages[currentChatId] || []),
-      { id: Math.floor(Date.now() / 10000), text: message, sender: "user" }
+      { id: Math.floor(Date.now()), text: message, sender: "user" }
     ];
 
     setMessages((prev) => ({
@@ -38,7 +38,7 @@ const Chat: React.FC = () => {
         ...prev,
         [currentChatId]: [
           ...(prev[currentChatId] || []),
-          { id: Math.floor(Date.now() / 10000), text: response, sender: "assistant" }
+          { id: Math.floor(Date.now()), text: response, sender: "assistant" }
         ]
       }));
     } catch (error) {
